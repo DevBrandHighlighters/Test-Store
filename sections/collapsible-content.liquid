@@ -70,6 +70,7 @@
           {% endif %}
           <div class="grid__item">
             {%- for block in section.blocks -%}
+              {% if block.settings.heading != blank %}
               <div
                 class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
                 {{ block.shopify_attributes }}
@@ -98,6 +99,7 @@
                   </div>
                 </details>
               </div>
+              {% endif %}
             {%- endfor -%}
           </div>
         </div>

@@ -450,6 +450,37 @@
   </div>
 </cart-items>
 
+<!--
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('/cart.js')
+        .then(response => response.json())
+        .then(cart => {
+          let currentTime = Math.floor(Date.now() / 1000);
+          let eligibleForDiscount = false;
+
+          cart.items.forEach(item => {
+            if (item.properties && item.properties._added_at) {
+              let addedTime = parseInt(item.properties._added_at);
+              let timeElapsed = currentTime - addedTime;
+              if (timeElapsed <= 300) {
+                eligibleForDiscount = true;
+              }
+            }
+          });
+
+          if (eligibleForDiscount) {
+            let checkoutButton = document.querySelector("[name='checkout']");
+            if (checkoutButton) {
+              checkoutButton.setAttribute("href", "/checkout?discount=QUICK100");
+            }
+          }
+        })
+        .catch(error => console.error("Error fetching cart data:", error));
+    });
+  </script>
+-->
+
 {% schema %}
 {
   "name": "t:sections.main-cart-items.name",
