@@ -31,7 +31,6 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -281,7 +280,6 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    {% render 'gp-head' %}
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -346,43 +344,6 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          document.querySelectorAll('.product-form button[type="submit"]').forEach(button => {
-              button.addEventListener('click', function(event) {
-                  event.preventDefault(); // Stop default behavior
-
-                  let mainProductId = document.querySelector('input[name="id"]').value; // Get product variant ID
-                  let discountProductId = "YOUR_DISCOUNT_PRODUCT_VARIANT_ID"; // Replace with your actual discount product variant ID
-
-                  // Add the main product to cart
-                  fetch('/cart/add.js', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                          id: mainProductId,
-                          quantity: 1
-                      })
-                  }).then(response => response.json())
-                  .then(data => {
-                      // Now add the discount product (₹-100)
-                      return fetch('/cart/add.js', {
-                          method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
-                          body: JSON.stringify({
-                              id: discountProductId,
-                              quantity: 1
-                          })
-                      });
-                  }).then(response => response.json())
-                  .then(data => {
-                      window.location.href = "/cart"; // Redirect to cart after adding
-                  });
-              });
-          });
-      });
     </script>
 
     {%- if settings.predictive_search_enabled -%}

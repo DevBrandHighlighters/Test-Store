@@ -121,7 +121,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
-    "cart_type": "drawer",
+    "cart_type": "notification",
     "show_vendor": false,
     "show_cart_note": false,
     "cart_drawer_collection": "",
@@ -142,12 +142,27 @@
     },
     "content_for_index": [],
     "blocks": {
-      "127709043890318779": {
-        "type": "shopify://apps/aiod-all-in-1-discount/blocks/install-snippets/9537caf0-36d5-4981-a648-8961a8e85652",
+      "9508235472506026167": {
+        "type": "shopify://apps/sg-notify-me-back-in-stock/blocks/notifyme-embed/149ed091-61ef-46c4-964d-eddbebe30e92",
         "disabled": false,
         "settings": {
-          "aiod_v2_call": "",
-          "aiod_dev_api_call": ""
+          "button_position": "right",
+          "side_button_text": "Notify Me!",
+          "side_button_color": "#ed2c24",
+          "side_button_text_color": "#ffffff",
+          "heading": "Notify Me When Available",
+          "heading_color": "#000000",
+          "subheading": "Fill in the required details to get notified when the product is again in stock!",
+          "subheading_color": "#4a4a4a",
+          "email_input_placeholder_text": "Email",
+          "name_input_placeholder_text": "Name",
+          "button_text": "Notify Me",
+          "button_color": "#ed2c24",
+          "button_text_color": "#ffffff",
+          "success_msg": "Thanks, We Will Notify You When Product Back In Stock!!",
+          "message_text_color": "#f15b29",
+          "side_class": "ptpl_sidebtn_look",
+          "ptpl_sideform": "ptpl_sideform_look"
         }
       }
     },

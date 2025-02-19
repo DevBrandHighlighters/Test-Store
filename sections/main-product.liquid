@@ -773,42 +773,6 @@
   </div>
 </section>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      let addToCartBtn = document.querySelector('form.product-form button[type="submit"]');
-      if (addToCartBtn) {
-          addToCartBtn.addEventListener('click', function(event) {
-              event.preventDefault();
-
-              let mainProductId = document.querySelector('input[name="id"]').value;
-
-              fetch('/cart/add.js', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                      id: mainProductId,
-                      quantity: 1
-                  })
-              }).then(response => response.json())
-              .then(data => {
-                  let discountProductId = "YOUR_DISCOUNT_PRODUCT_VARIANT_ID";
-                  return fetch('/cart/add.js', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                          id: discountProductId,
-                          quantity: 1
-                      })
-                  });
-              }).then(response => response.json())
-              .then(data => {
-                  window.location.href = "/cart";
-              });
-          });
-      }
-  });
-</script>
-
 {% schema %}
 {
   "name": "t:sections.main-product.name",
